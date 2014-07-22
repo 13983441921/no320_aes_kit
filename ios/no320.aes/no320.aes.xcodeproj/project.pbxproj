@@ -19,10 +19,21 @@
 		A61F0A4E197E0B25008FB9F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61F0A36197E0B24008FB9F2 /* UIKit.framework */; };
 		A61F0A56197E0B25008FB9F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A61F0A54197E0B25008FB9F2 /* InfoPlist.strings */; };
 		A61F0A58197E0B25008FB9F2 /* no320_aesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A61F0A57197E0B25008FB9F2 /* no320_aesTests.m */; };
+		A61F0A64197E0C08008FB9F2 /* NSData+AesEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = A61F0A63197E0C08008FB9F2 /* NSData+AesEncryption.m */; };
+		A61F0A65197E0C08008FB9F2 /* NSData+AesEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = A61F0A63197E0C08008FB9F2 /* NSData+AesEncryption.m */; };
+		A61F0A67197E0DFA008FB9F2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A61F0A66197E0DFA008FB9F2 /* README.md */; };
+		A61F0A68197E0DFA008FB9F2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A61F0A66197E0DFA008FB9F2 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		A61F0A4F197E0B25008FB9F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A61F0A27197E0B24008FB9F2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A61F0A2E197E0B24008FB9F2;
+			remoteInfo = no320.aes;
+		};
+		A69F63B6197E62480022EF4A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A61F0A27197E0B24008FB9F2 /* Project object */;
 			proxyType = 1;
@@ -48,6 +59,9 @@
 		A61F0A53197E0B25008FB9F2 /* no320.aesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "no320.aesTests-Info.plist"; sourceTree = "<group>"; };
 		A61F0A55197E0B25008FB9F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A61F0A57197E0B25008FB9F2 /* no320_aesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = no320_aesTests.m; sourceTree = "<group>"; };
+		A61F0A62197E0C08008FB9F2 /* NSData+AesEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AesEncryption.h"; sourceTree = "<group>"; };
+		A61F0A63197E0C08008FB9F2 /* NSData+AesEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AesEncryption.m"; sourceTree = "<group>"; };
+		A61F0A66197E0DFA008FB9F2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +91,7 @@
 		A61F0A26197E0B24008FB9F2 = {
 			isa = PBXGroup;
 			children = (
+				A61F0A66197E0DFA008FB9F2 /* README.md */,
 				A61F0A38197E0B24008FB9F2 /* no320.aes */,
 				A61F0A51197E0B25008FB9F2 /* no320.aesTests */,
 				A61F0A31197E0B24008FB9F2 /* Frameworks */,
@@ -107,6 +122,7 @@
 		A61F0A38197E0B24008FB9F2 /* no320.aes */ = {
 			isa = PBXGroup;
 			children = (
+				A61F0A61197E0C08008FB9F2 /* src */,
 				A61F0A41197E0B24008FB9F2 /* No320AppDelegate.h */,
 				A61F0A42197E0B24008FB9F2 /* No320AppDelegate.m */,
 				A61F0A44197E0B24008FB9F2 /* Images.xcassets */,
@@ -144,6 +160,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A61F0A61197E0C08008FB9F2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A61F0A62197E0C08008FB9F2 /* NSData+AesEncryption.h */,
+				A61F0A63197E0C08008FB9F2 /* NSData+AesEncryption.m */,
+			);
+			name = src;
+			path = ../src;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,6 +202,7 @@
 			);
 			dependencies = (
 				A61F0A50197E0B25008FB9F2 /* PBXTargetDependency */,
+				A69F63B7197E62480022EF4A /* PBXTargetDependency */,
 			);
 			name = no320.aesTests;
 			productName = no320.aesTests;
@@ -220,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A61F0A67197E0DFA008FB9F2 /* README.md in Resources */,
 				A61F0A3D197E0B24008FB9F2 /* InfoPlist.strings in Resources */,
 				A61F0A45197E0B24008FB9F2 /* Images.xcassets in Resources */,
 			);
@@ -229,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A61F0A68197E0DFA008FB9F2 /* README.md in Resources */,
 				A61F0A56197E0B25008FB9F2 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A61F0A64197E0C08008FB9F2 /* NSData+AesEncryption.m in Sources */,
 				A61F0A3F197E0B24008FB9F2 /* main.m in Sources */,
 				A61F0A43197E0B24008FB9F2 /* No320AppDelegate.m in Sources */,
 			);
@@ -250,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A61F0A58197E0B25008FB9F2 /* no320_aesTests.m in Sources */,
+				A61F0A65197E0C08008FB9F2 /* NSData+AesEncryption.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +291,11 @@
 			isa = PBXTargetDependency;
 			target = A61F0A2E197E0B24008FB9F2 /* no320.aes */;
 			targetProxy = A61F0A4F197E0B25008FB9F2 /* PBXContainerItemProxy */;
+		};
+		A69F63B7197E62480022EF4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A61F0A2E197E0B24008FB9F2 /* no320.aes */;
+			targetProxy = A69F63B6197E62480022EF4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -444,6 +480,7 @@
 				A61F0A5D197E0B25008FB9F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A61F0A5E197E0B25008FB9F2 /* Build configuration list for PBXNativeTarget "no320.aesTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +489,7 @@
 				A61F0A60197E0B25008FB9F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
