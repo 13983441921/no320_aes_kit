@@ -69,6 +69,7 @@ NSString *NSDocumentsFolder()
 
     //byte转换为NSData类型，以便下边加密方法的调用
     NSData *keyData= [self get_key_data];
+    NSData *encryptData= [self get_key_data];
 
 //    //
 //    NSData *cipherTextData = [plainTextData AES256EncryptWithKey:keyData];
@@ -77,14 +78,23 @@ NSString *NSDocumentsFolder()
 //        printf("%x",plainTextByte[i]);
 //    }
 //    
-//    NSString *str = @"1fb1e65c94fb8f0be382f47adbc88f";
+    NSString *strs = @"1fb1e65c94fb8f0be382f47adbc88f";
+    
+    NSData *plainTextData = [strs dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *strff = [plainTextData newStringInBase64FromData];
 //    
-//    NSData *cipherTextData1 = [plainTextData AES256DecryptWithKey:keyData];
-//    
-//    str = [cipherTextData1 hexadecimalString];
+    NSData *cipherTextData = [encryptData AES256DecryptWithKey:keyData];
+    
+    Byte *plainTextByte = (Byte *)[cipherTextData bytes];
+    for(int i=0;i<[cipherTextData length];i++){
+        printf("%x",plainTextByte[i]);
+    }
+
+//
+    NSString *str = [cipherTextData hexadecimalString];
 
     
-//    XCTAssertEqualObjects(@"1fb1e65c94fb8f0be382f47adbc88f" ,str, @"解密成功");
+    XCTAssertEqualObjects(@"1fb1e65c94fb8f0be382f47adbc88f" ,str, @"解密成功");
 }
 
 

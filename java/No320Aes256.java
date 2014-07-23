@@ -1,17 +1,15 @@
-package com.nationsky.utils;
 import java.io.UnsupportedEncodingException;
 import java.security.Key;  
-import java.security.Security;
- 
+import java.security.Security; 
 import javax.crypto.Cipher;  
 import javax.crypto.SecretKey;  
 import javax.crypto.spec.SecretKeySpec;  
 
 import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.binary.Base64;  
+  
 
-import sun.misc.BASE64Decoder;
- 
-public class AES256{  
+public class No320Aes256{  
      
          /** 
          * 密钥算法 
@@ -131,7 +129,8 @@ public class AES256{
          */ 
         public static void main(String[] args) throws UnsupportedEncodingException{  
         	
-        	BASE64Decoder k = new BASE64Decoder();
+        	// BASE64Decoder k = new BASE64Decoder();
+			
         	
         	String str = "AES";
             //初始化密钥  
@@ -150,7 +149,7 @@ public class AES256{
                     System.out.printf("%x", y[i]);
                 }
                 System.out.print("\n");
-                
+				
                 
                 //加密数据  
 //                byte[] data=AES256.encrypt(str.getBytes(), key); 
@@ -161,7 +160,7 @@ public class AES256{
                 
 //                byte[] data = hexStr2ByteArray("ba7b99471a52a1c05bf7ec4794efd0ea");
                 
-               byte[] data =  k.decodeBuffer("wEM2jyZWkYCr3miyTrk4sw==");
+               byte[] data = Base64.decodeBase64("wEM2jyZWkYCr3miyTrk4sw==");
                 
                 System.out.print("加密后："); 
                 for(int i = 0;i<data.length;i++){
