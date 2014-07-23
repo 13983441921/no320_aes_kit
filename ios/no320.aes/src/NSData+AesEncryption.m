@@ -21,8 +21,8 @@ static char base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123
 {
     
     //AES256加密，密钥应该是32位的
-    const void * keyPtr2 = [key bytes];
-    char (*keyPtr)[32] = keyPtr2;
+    //const void * keyPtr2 = [key bytes];
+    //char (*keyPtr)[32] = keyPtr2;
     
     //对于块加密算法，输出大小总是等于或小于输入大小加上一个块的大小
     //所以在下边需要再加上一个块的大小

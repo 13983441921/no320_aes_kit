@@ -32,7 +32,7 @@
 /**
  * 加密
  */
-- (NSData *)AES256EncryptWithKey:(NSString *)key;
+- (NSData *)AES256EncryptWithKey:(NSData *)key;
 
 /**
  * 解密
