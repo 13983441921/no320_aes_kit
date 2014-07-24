@@ -15,6 +15,14 @@ NSString *NSDocumentsFolder()
     return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
 }
 
+#define ORIGIN_STRING @"AES"
+#define ENCRYPT_STRING @"1fb1e65c94fb8f0be382f47adbc88f"
+#define BASE64_ENCRYPT_STRING @"H7HmXAlPuPC+OC9HCtvIjw"
+
+#define key_file_path [NSString stringWithFormat:@"%@/%@",NSDocumentsFolder(),@"aes256.key"]
+#define data_file_path [NSString stringWithFormat:@"%@/%@",NSDocumentsFolder(),@"aes256.data"]
+
+
 @interface no320_aesTests : XCTestCase
 
 
@@ -22,9 +30,6 @@ NSString *NSDocumentsFolder()
 
 @implementation no320_aesTests
 
-#define ORIGIN_STRING @"AES"
-#define key_file_path [NSString stringWithFormat:@"%@/%@",NSDocumentsFolder(),@"aes256.key"]
-#define data_file_path [NSString stringWithFormat:@"%@/%@",NSDocumentsFolder(),@"aes256.data"]
 
 #pragma mark - Unit Test
 
@@ -59,7 +64,7 @@ NSString *NSDocumentsFolder()
         printf("%x",plainTextByte[i]);
     }
     
-    // 'AES' encrypt to base64 := H7HmXAlPuPC+OC9HCtvIjw
+    // 'AES' encrypt to base64 := H7HmXAlPuPC+OC9HCtvIjw 1fb1e65c94fb8f0be382f47adbc88f
     NSString *base64_str = [cipherTextData newStringInBase64FromData];
     
     NSString *str = [cipherTextData hexadecimalString];
@@ -74,28 +79,25 @@ NSString *NSDocumentsFolder()
 
     //byte转换为NSData类型，以便下边加密方法的调用
     NSData *keyData= [self get_key_data];
-    NSData *encryptData= [self get_key_data];
+    NSData *encryptData= [self get_encryptdata_data];
 
-//    //
-//    NSData *cipherTextData = [plainTextData AES256EncryptWithKey:keyData];
-//    Byte *plainTextByte = (Byte *)[cipherTextData bytes];
-//    for(int i=0;i<[cipherTextData length];i++){
-//        printf("%x",plainTextByte[i]);
-//    }
-//    
-    NSString *strs = @"1fb1e65c94fb8f0be382f47adbc88f";
+    [self dump_data:encryptData desc:@"dsdsdsdsds"];
     
-    NSData *plainTextData = [strs dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *strff = [plainTextData newStringInBase64FromData];
-//    
-    NSData *cipherTextData = [encryptData AES256DecryptWithKey:keyData];
     
-    Byte *plainTextByte = (Byte *)[cipherTextData bytes];
-    for(int i=0;i<[cipherTextData length];i++){
-        printf("%x",plainTextByte[i]);
-    }
 
-//
+    NSString *base64_encrypt_str = [encryptData newStringInBase64FromData];
+    
+    XCTAssertEqualObjects(@"H7HmXAlPuPC+OC9HCtvIjw" ,base64_encrypt_str, @"解密成功");
+    
+    
+    NSString *sss = [NSData base64encode:base64_encrypt_str];
+    
+    NSData *plainTextData = [sss dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSData *cipherTextData = [plainTextData AES256DecryptWithKey:keyData];
+
+    [self dump_data:cipherTextData];
+
     NSString *str = [cipherTextData hexadecimalString];
 //    XCTAssertEqualObjects(@"1fb1e65c94fb8f0be382f47adbc88f" ,str, @"解密成功");
 }
@@ -143,6 +145,28 @@ NSString *NSDocumentsFolder()
 
 - (NSData *)get_encryptdata_data{
     return [NSData dataWithContentsOfFile:data_file_path];
+}
+
+
+/**
+ * 打印日志，参数为NSData
+ */
+- (void)dump_data:(NSData *)encryptData {
+    [self dump_data:encryptData desc: @"[DATA DUMP INFO]"];
+}
+
+/**
+ * 打印日志，参数为NSData
+ */
+- (void)dump_data:(NSData *)encryptData desc:(NSString *)desc{
+    NSLog(@"====================================================\n%@",desc);
+
+    Byte *plainTextByte = (Byte *)[encryptData bytes];
+    for(int i=0;i<[encryptData length];i++){
+        printf("%x",plainTextByte[i]);
+    }
+    
+    printf("\n====================================================\n");
 }
 
 @end

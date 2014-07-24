@@ -1,3 +1,6 @@
 [submodule "vendor/file"]
 	path = vendor/file
 	url = git@github.com:i5ting/ios-file.git
+[submodule "vendor/GTMBase64"]
+	path = vendor/GTMBase64
+	url = git@github.com:r258833095/GTMBase64.git
