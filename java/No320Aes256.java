@@ -136,7 +136,7 @@ public class No320Aes256{
             //初始化密钥  
             byte[] key = null;
             try {
-                key = AES256.initkey();
+                key = No320Aes256.initkey();
                 System.out.print("密钥：");  
                 for(int i = 0;i<key.length;i++){
                     System.out.printf("%x", key[i]);
@@ -160,7 +160,7 @@ public class No320Aes256{
                 
 //                byte[] data = hexStr2ByteArray("ba7b99471a52a1c05bf7ec4794efd0ea");
                 
-               byte[] data = Base64.decodeBase64("wEM2jyZWkYCr3miyTrk4sw==");
+               byte[] data = Base64.decodeBase64("H7HmXAlPuPC+OC9HCtvIjw");
                 
                 System.out.print("加密后："); 
                 for(int i = 0;i<data.length;i++){
@@ -170,7 +170,7 @@ public class No320Aes256{
                 System.out.println(data.length);
                  
                 //解密数据  
-                data=AES256.decrypt(data, key);  
+                data = No320Aes256.decrypt(data, key);  
                 System.out.println("解密后："+new String(data,"UTF-8")); 
             } catch (Exception e) {
                 // TODO Auto-generated catch block
