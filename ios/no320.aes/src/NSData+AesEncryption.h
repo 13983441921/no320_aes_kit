@@ -52,4 +52,30 @@
 
 - (NSString *)hexadecimalString;
 
+
+
+@end
+
+
+
+@interface NSString (AesEncryption)
+#pragma mark - Utils Method by alfred.sang
+
+/**
+ * 返回加密后的base46字符串
+ *
+ * @param plain_text（NSString）
+ * @param key_data  （NSData）
+ */
++ (NSString *)get_base64_encrypt_string:(NSString *)plain_text key_data:(NSData *)key_data;
+
+
+/**
+ * 返回加密后的base46字符串 todo
+ *
+ * @param plain_text（NSString）
+ * @param key_data  （NSData）
+ */
++ (NSString *)get_base64_encrypt_string:(NSString *)plain_text key_byte_arr:(id)key_byte_arr;
+
 @end

@@ -180,4 +180,42 @@ static char base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123
     return [NSString stringWithString:hexString];
 }
 
+#pragma mark - Utils Method by alfred.sang
+
+
+
+@end
+
+
+
+
+@implementation NSString (AesEncryption)
+
+/**
+ * 返回加密后的base46字符串
+ *
+ * @param plain_text（NSString）
+ * @param key_data  （NSData）
+ */
++ (NSString *)get_base64_encrypt_string:(NSString *)plain_text key_data:(NSData *)key_data{
+    NSData *plainTextData = [plain_text dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *cipherTextData = [plainTextData AES256EncryptWithKey:key_data];
+    
+    return [cipherTextData newStringInBase64FromData];
+}
+
+
+/**
+ * 返回加密后的base46字符串 todo
+ *
+ * @param plain_text（NSString）
+ * @param key_data  （NSData）
+ */
++ (NSString *)get_base64_encrypt_string:(NSString *)plain_text key_byte_arr:(id)key_byte_arr{
+    NSData *key_data = [[NSData alloc] initWithBytes:(Byte)key_byte_arr length:32];
+    
+    return [NSString get_base64_encrypt_string:plain_text key_data:key_data];
+}
+
+
 @end

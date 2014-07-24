@@ -67,9 +67,7 @@ NSString *NSDocumentsFolder()
     XCTAssertEqualObjects(@"1fb1e65c94fb8f0be382f47adbc88f" ,str, @"解密成功");
 }
 
-- (NSString *)encrypt:(NSString *)plain_text key:(NSData *)key_data{
-    NSData *plainTextData = [plain_text dataUsingEncoding:NSUTF8StringEncoding];
-}
+
 
 - (void)testDecryptWithKey
 {
@@ -105,6 +103,23 @@ NSString *NSDocumentsFolder()
 }
 
 
+#pragma mark - NSString
+- (void)testGet_base64_encrypt_string{
+    NSString *plain_text = @"AES";//明文
+    
+    //为了测试，这里先把密钥写死
+    Byte keyByte[] = {0x08,0x08,0x04,0x0b,0x02,0x0f,0x0b,0x0c,0x01,0x03,0x09,0x07,0x0c,0x03,
+        0x07,0x0a,0x04,0x0f,0x06,0x0f,0x0e,0x09,0x05,0x01,0x0a,0x0a,0x01,0x09,
+        0x06,0x07,0x09,0x0d};
+    
+    NSData *key_data = [[NSData alloc] initWithBytes:keyByte length:32];
+    
+    NSString *_base64_encrypt_string =  [NSString get_base64_encrypt_string: plain_text key_data: key_data];
+    
+    XCTAssertEqualObjects(@"H7HmXAlPuPC+OC9HCtvIjw" ,_base64_encrypt_string, @"解密成功");
+}
+ 
+
 #pragma mark - Private
 
 - (void)init_local_data {
@@ -128,5 +143,8 @@ NSString *NSDocumentsFolder()
 - (NSData *)get_encryptdata_data{
     return [NSData dataWithContentsOfFile:data_file_path];
 }
+
+
+
 
 @end
