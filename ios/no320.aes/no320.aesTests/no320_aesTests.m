@@ -90,17 +90,17 @@ NSString *NSDocumentsFolder()
     
     XCTAssertEqualObjects(@"H7HmXAlPuPC+OC9HCtvIjw" ,base64_encrypt_str, @"解密成功");
     
+    NSData *cipherTextData = [encryptData AES256DecryptWithKey:keyData];
     
-    NSString *sss = [GTMBase64 decodeBase64String:base64_encrypt_str];
     
-    NSData *plainTextData = [sss dataUsingEncoding:NSUTF8StringEncoding];
-
-    NSData *cipherTextData = [plainTextData AES256DecryptWithKey:keyData];
-
-    [self dump_data:cipherTextData];
-
-    NSString *str = [cipherTextData hexadecimalString];
-//    XCTAssertEqualObjects(@"1fb1e65c94fb8f0be382f47adbc88f" ,str, @"解密成功");
+    NSMutableString *string = [NSMutableString string];
+    Byte *plainTextByte = (Byte *)[cipherTextData bytes];
+    for(int i=0;i<[cipherTextData length];i++){
+        printf("%c",plainTextByte[i]);
+        [string appendFormat:@"%c", plainTextByte[i]    ];
+    }
+    
+    XCTAssertEqualObjects(@"AES" ,string, @"解密成功");
 }
 
 #pragma mark - NSString

@@ -78,8 +78,8 @@ static char base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123
     
     return nil;
 }
-
-
+ 
+ 
 - (NSString *)newStringInBase64FromData            //追加64编码
 {
     NSMutableString *dest = [[NSMutableString alloc] initWithString:@""];
