@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "NSData+AesEncryption.h"
+#import "GTMBase64.h"
 
 
 NSString *NSDocumentsFolder()
@@ -90,7 +91,7 @@ NSString *NSDocumentsFolder()
     XCTAssertEqualObjects(@"H7HmXAlPuPC+OC9HCtvIjw" ,base64_encrypt_str, @"解密成功");
     
     
-    NSString *sss = [NSData base64encode:base64_encrypt_str];
+    NSString *sss = [GTMBase64 decodeBase64String:base64_encrypt_str];
     
     NSData *plainTextData = [sss dataUsingEncoding:NSUTF8StringEncoding];
 
